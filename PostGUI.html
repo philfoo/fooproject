@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>New Post</title>
+		<script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type = "text/javascript">
+			function check(){
+				if (!$(".post").val() && !$(".posttitle").val()){
+					alert("There must either be a title or content!");
+				}
+				else{
+					var title = $(".posttitle").val();
+					var postcontent = $(".post").val();
+					$.ajax({
+						method: "POST",
+						url: "addpost.php",
+						data: {title: title, postcontent: postcontent},
+						success: function(){
+							alert("success");
+							$(".posttitle").val('');
+							$(".post").val('');
+						}
+					});
+				}
+			}
+
+
+		</script>
+		<link rel = "stylesheet" type = "text/css" href = "formtheme.css">
+	<head>
+	<body>
+			<form method = "post" action = "javascript:check();">
+				<span style = "font-size: 20px">Title: </span><br><input type = "text" name = 'title' class = "posttitle"><br>
+				<textarea name = "postcontent" class = "post"></textarea><br>
+				<input type = "submit" value = "Submit" class = "button">
+			</form>
+	</body>
+</html>
