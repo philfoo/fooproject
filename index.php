@@ -31,7 +31,7 @@
                     
                     $("#login").fadeOut(1000);
                     
-                    $(".banner-bg").prepend($("<form id = 'login' method = 'post' action = 'checklogin.php'>Username: <input type = 'text' name = 'myusername'><br>Password: <input type = 'text' name = 'mypassword'><br><input type = 'submit' value = 'Submit'></form>").fadeIn(1000));
+                    $(".banner-bg").prepend($("<form id = 'login' method = 'post' action = 'serverside/checklogin.php'>Username: <input type = 'text' name = 'myusername'><br>Password: <input type = 'text' name = 'mypassword'><br><input type = 'submit' value = 'Submit'></form>").fadeIn(1000));
                     
                 });
 
@@ -66,7 +66,7 @@
                     <ul class="navigation">
                         <li><a href="#top"><i class="fa fa-home"></i>Home</a></li>
                         <li><a href="#about"><i class="fa fa-user"></i>About Me</a></li>
-                        <li><a href="#projects"><i class="fa fa-newspaper-o"></i>My Gallery</a></li>
+                        <li><a href="#projects"><i class="fa fa-newspaper-o"></i>My Projects</a></li>
                         <li><a href="#contact"><i class="fa fa-envelope"></i>Contact Me</a></li>
                     </ul>
                 </div>
@@ -86,7 +86,7 @@
                 <ul class="navigation">
                     <li><a href="#top"><i class="fa fa-globe"></i>Welcome</a></li>
                     <li><a href="#about"><i class="fa fa-pencil"></i>About Me</a></li>
-                    <li><a href="#projects"><i class="fa fa-paperclip"></i>My Gallery</a></li>
+                    <li><a href="#projects"><i class="fa fa-paperclip"></i>My Projects</a></li>
                     <li><a href="#contact"><i class="fa fa-link"></i>Contact Me</a></li>
                 </ul>
             </div> <!-- .main-navigation -->
@@ -110,15 +110,16 @@
                 }
                 else{
                     $name = $_SESSION["username"];
-                    echo '<div class ="loggedIn">Hello, ' .$name. '<a href = "logout.php"><input type = "button" id = "logout" value = "Log out"></a></div>';   
+                    echo '<div class ="loggedIn">Hello, ' .$name. '<a href = "serverside/logout.php"><input type = "button" id = "logout" value = "Log out"></a></div>';   
                 }
             
             ?>
 
             <div class="banner-overlay"></div>
             <div class="welcome-text">
-                <h2>Simple Design | Personal Portfolio</h2>
-                <h5>This is a mobile friendly layout with Bootstrap v3.3.1 framework. Maecenas eu ante at nunc posuere fringilla sit amet non dolor. Proin condimentum fermentum nunc.</h5>
+                <h2>Philip Foo</h2>
+                <h5>Student of the Game</h5>
+                <h6>Duke | ECE | Econ | Basketball</h6>
             </div>
         </div>
 
@@ -132,11 +133,14 @@
                     <div class="page-section" id="about">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4 class="widget-title">Learn About Me</h4>
+                            <h4 class="widget-title">About Me</h4>
                             <div class="about-image">
                                 <img src="img/8.jpg" alt="about me">
                             </div>
-                            <p>Volton is free <a rel="nofollow" href="http://www.templatemo.com/page/1">responsive mobile template</a> from <span class="blue">template</span><span class="green">mo</span> website. You can use this template for any purpose. Please tell your friends about it. Thank you. Credit goes to <a rel="nofollow" href="http://unsplash.com">Unsplash</a> for images used in this design. You can <strong>change menu icons</strong> by checking <a rel="nofollow" href="http://fontawesome.info/font-awesome-icon-world-map/">Font Awesome</a> (version 4). Example: <strong>&lt;i class=&quot;fa fa-camera&quot;&gt;&lt;/i&gt;</strong></p>
+                            <p>
+                                Welcome to my personal website! It was built to tell you a little bit more about myself and serve as a place for me to drop
+                                a couple of my projects. I'm currently a junior at Duke University 
+                            </p>
                             <hr>
                         </div>
                     </div> <!-- #about -->

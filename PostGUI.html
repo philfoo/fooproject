@@ -4,6 +4,15 @@
 		<title>New Post</title>
 		<script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script type = "text/javascript">
+			function thisDate(){
+				var dd = new Date();
+				var day = dd.getDate().toString();
+				var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+				var monthString = month[dd.getMonth()];
+				var year = dd.getFullYear().toString();
+				return monthString + " " + day + ", " + year;
+			};
+
 			function check(){
 				if (!$(".post").val() && !$(".posttitle").val()){
 					alert("There must either be a title or content!");
@@ -11,12 +20,13 @@
 				else{
 					var title = $(".posttitle").val();
 					var postcontent = $(".post").val();
+					var date = thisDate();
 					$.ajax({
 						method: "POST",
-						url: "addpost.php",
-						data: {title: title, postcontent: postcontent},
+						url: "serverside/addpost.php",
+						data: {title: title, postcontent: postcontent, date: date},
 						success: function(){
-							alert("success");
+							alert("Post added successfully");
 							$(".posttitle").val('');
 							$(".post").val('');
 						}
