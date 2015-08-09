@@ -35,7 +35,24 @@
                     
                 });
 
+                //Function to delete the post selected
+                $(".delete").click(function(){
+                    var response = confirm("Are you sure you want to delete this post?");
+                    if (response == true){
+                        var postID = ($(this).closest(".row").data('id'));
+                        $.ajax({
+                            method: "POST",
+                            url: "serverside/deletepost.php",
+                            data: {postID: postID},
+                            success: function(){
+                                location.reload();
+                            }
+                        });
+                    }
+                });
             });
+
+            
 
 
         </script>
@@ -129,7 +146,7 @@
                         $db_name = "LoginSystem";
                         $tbl_name = "posts";
                         $connect = mysqli_connect($host, $username, $password, $db_name)or die("Cannot Connect!");
-                        //mysql_select_db($db_name)or die("Cannot select Database");
+                        //mysql_select_db($db_nam e)or die("Cannot select Database");
 
                         //Initialize query, get first post ID
                         $sql = "SELECT *FROM $tbl_name";
@@ -148,6 +165,12 @@
 
                                     //NL2BR FOR LINE BREAKS
                                     echo '<p>' .nl2br($content). '</p>';
+
+                                    //delete button for the user
+                                    if (isset($_SESSION["username"])){
+                                        echo '<p class = "delete">Delete</p>';
+                                    }
+
                                     echo '<hr class = "blogborder">';
                                 echo '</div>';
                             echo '</div>';
